@@ -80,6 +80,7 @@ $\mathbb{P}\{\xi=k\}=\frac{\exp{(-\lambda)}\lambda^k}{k!}$
 
 \newpage
 \section{Абсолютно неперервні розподіли}
+\subsection{Теорія ймовірностей}
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|c|c|}
@@ -94,9 +95,25 @@ $\mathbb{P}\{\xi=k\}=\frac{\exp{(-\lambda)}\lambda^k}{k!}$
         $\aleph(0, 1)$ & $\frac{1}{2}+\frac{1}{\sqrt{2\pi}}\int\limits_0^{x}{\exp{(-\frac{t^2}{2})}dt}=\frac{1}{2}+\Phi(x)$ & $\frac{1}{\sqrt{2\pi}}\exp{(-\frac{x^2}{2})}$ & $0$ & $1$\\\hline
         $\aleph(a, \sigma^2)$ & $\frac{1}{2}+\Phi(\frac{x-a}{\sigma})$ & $\frac{1}{\sigma\sqrt{2\pi}}\exp{(-\frac{(x-a)^2}{2\sigma^2})}$ & $a$ & $\sigma^2$\\\hline
     \end{tabular}
-    % \caption{}
-    \label{tab:destr_tab}
+    \label{tab:destr_pt_tab}
 \end{table}
-
+\newpage
+\subsection{Математична статистика}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+        Розподіл & $f_\xi(x)$ & $\mathbb{E}_\xi$ & $\mathbb{D}_\xi$\\\hline
+        $\Gamma(\alpha,\beta)$ & $\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}\cdot\mathbb{I}\{x>0\}$ & $\frac{\alpha}{\beta}$ & $\frac{\alpha}{\beta^2}$\\[1ex]\hline
+        $\chi_n^2$ & $f_{\Gamma(\frac{n}{2},\frac{1}{2})}$ & $n$ & $2n$ \\\hline
+        $St_n, t_n$ & $\frac{\Gamma(\frac{n+1}{2})}{\sqrt{n\pi}\Gamma(\frac{n}{2})}(1+\frac{x^2}{n})^{-\frac{n+1}{2}}$ & $0\,(n>1)$ & $\frac{n}{n-2}\,(n>2);\infty\,(1<n\leq2)$\\\hline
+        $F_{m,n}$ & $\frac{1}{B(\frac{m}{2},\frac{n}{2})}(\frac{m}{n})^{\frac{m}{2}}x^{\frac{m}{2}-1}(1+\frac{m}{n}x)^{-\frac{m+n}{2}}\;, x>0$ & $\frac{n}{n-2}\,(n>2)$ & $\frac{2n^2(m+n-2)}{m(n-2)^2(n-4))}\,(n>4)$\\\hline
+    \end{tabular}
+    \label{tab:destr_ms_tab}
+\end{table}
+$$\chi_n^2 - \texttt{Розподіл суми квадратів n незалежних } \xi_i\sim\aleph(0,1): \xi_1^2+\dots+\xi_n^2\,;$$
+$$St_n - \texttt{Розподіл }\frac{\xi_0}{\sqrt{(\xi_1^2+\dots+\xi_n^2)/n}},\texttt{ де } \xi_i\sim\aleph(0,1), i=\overline{0,n}\,;$$
+$$St_n - \texttt{Розподіл }\frac{(\xi_1^2+\dots+\xi_m^2)/m}{(\eta_1^2+\dots+\eta_n^2)/n},
+\texttt{ де } \xi_i\sim\aleph(0,1),\eta_j\sim\aleph(0,1), i=\overline{1,m},j=\overline{1,n}$$
 
 \end{document}
