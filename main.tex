@@ -1,0 +1,102 @@
+\documentclass[16pt]{scrartcl}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{ragged2e}
+\usepackage[english,russian]{babel}
+\usepackage{misccorr,color,ragged2e,amsfonts,amsthm,graphicx,systeme,amsmath,mdframed,lipsum}
+\usepackage[a4paper, landscape]{geometry}
+\renewcommand{\arraystretch}{1.5}
+% \geometry{textwidth=20cm}
+\usepackage{multicol}
+\usepackage{wrapfig}
+
+\title{Розподіли випадкових величин}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section{Дискретні розподіли}
+\subsection{Розподіл Бернулі}
+\begin{multicols}{2}
+    \begin{wraptable}{l}{0.5\linewidth}
+    \begin{tabular}{c|c|c}
+        $\xi$ & $0$ & $1$ \\\hline
+        $\mathbb{P}$ & q & p
+    \end{tabular}
+    \end{wraptable}
+    $$\mathbb{E}_\xi=p;\quad\mathbb{D}_\xi=p\cdot q$$
+\end{multicols}
+
+\subsection{Біноміальний розподіл}
+
+$\xi\sim Bin(n,p)$\\\\
+$\mathbb{E}_\xi=n p;\quad\mathbb{D}_\xi=n p q;\quad G_\xi(z)=(p z+q)^n$
+\begin{table}[h]
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $\xi$ & $0$ & $1$ & $\cdots$ & k & $\cdots$ & n \\\hline
+        $\mathbb{P}$ & $q^n$ & $n p q^{n-1}$ & $\cdots$ & $C_n^k p^k q^{n-k}$ & $\cdots$ & $p^n$
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}\\
+$Bin(1,p)\sim\texttt{Розподіл Бернулі}$
+
+\newpage
+
+\subsection{Геометричний розподіл}
+$\xi\sim Geom_0(p)$\\\\
+$\mathbb{E}_\xi=\frac{q}{p};\quad\mathbb{D}_\xi=\frac{q}{p^2};\quad G_\xi(z)=\frac{p}{1-q z}$
+\begin{table}[h]
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $\xi$ & $0$ & $1$ & $2$ & $\cdots$ & k & $\cdots$ \\\hline
+        $\mathbb{P}$ & $p$ & $q p$ & $q^2 p$ & $\cdots$ & $q^k p$ & $\cdots$
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}\\
+$\eta\sim Geom_1(p);\quad\eta=\xi+1$\\\\
+$\mathbb{E}_\eta=\frac{1}{p};\quad\mathbb{D}_\eta=\frac{q}{p^2}$
+\begin{table}[h]
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $\xi$ & $1$ & $2$ & $3$ & $\cdots$ & k & $\cdots$ \\\hline
+        $\mathbb{P}$ & $p$ & $q p$ & $q^2 p$ & $\cdots$ & $q^{k-1} p$ & $\cdots$
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}
+\newpage
+
+\subsection{Розподіл Пуасона}
+$\xi\sim Pois(\lambda), \lambda > 0$\\\\
+$\mathbb{E}_\xi=\mathbb{D}_\xi=\lambda;\quad G_\xi(z)=\exp{(\lambda(z-1))}$\\\\
+$\mathbb{P}\{\xi=k\}=\frac{\exp{(-\lambda)}\lambda^k}{k!}$
+\begin{table}[h]
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $\xi$ & $0$ & $1$ & $2$ & $\cdots$ & k & $\cdots$ \\\hline
+        $\mathbb{P}$ & $e^{-\lambda}$ & $\lambda e^{-\lambda}$ & $\frac{\lambda^2\exp{(-\lambda)}}{2}$ & $\cdots$ & $\frac{\exp{(-\lambda)}\lambda^k}{k!}$ & $\cdots$
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}
+
+\newpage
+\section{Абсолютно неперервні розподіли}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        Розподіл & $F_\xi(x)$ & $f_\xi(x)$ & $\mathbb{E}_\xi$ & $\mathbb{D}_\xi$\\\hline
+        $U(a,b)$ & $\left\{\begin{array}{ll}
+            0, & x \leq a; \\
+            \frac{x-a}{b-a}, & x\in(a,b);\\
+            1, & x \geq b.
+        \end{array}\right.$ & $\frac{1}{b-a}\cdot\mathbb{I}\{x\in(a,b)\}$ & $\frac{a+b}{2}$ & $\frac{(b-a)^2}{12}$\\\hline
+        $Exp(\lambda)$ & $(1-\exp{(-\lambda x)})\cdot\mathbb{I}\{x\geq0\}$ & $\lambda \exp{(-\lambda x)}\cdot\mathbb{I}\{x\geq0\}$ &$\frac{1}{\lambda}$ & $\frac{1}{\lambda^2}$\\\hline
+        $\aleph(0, 1)$ & $\frac{1}{2}+\frac{1}{\sqrt{2\pi}}\int\limits_0^{x}{\exp{(-\frac{t^2}{2})}dt}=\frac{1}{2}+\Phi(x)$ & $\frac{1}{\sqrt{2\pi}}\exp{(-\frac{x^2}{2})}$ & $0$ & $1$\\\hline
+        $\aleph(a, \sigma^2)$ & $\frac{1}{2}+\Phi(\frac{x-a}{\sigma})$ & $\frac{1}{\sigma\sqrt{2\pi}}\exp{(-\frac{(x-a)^2}{2\sigma^2})}$ & $a$ & $\sigma^2$\\\hline
+    \end{tabular}
+    % \caption{}
+    \label{tab:destr_tab}
+\end{table}
+
+
+\end{document}
